@@ -1,0 +1,224 @@
+{
+	"info": {
+		"_postman_id": "a8e80097-a743-4e49-9097-58ff8b46e08e",
+		"name": "EstacionServicio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Correctas",
+			"item": [
+				{
+					"name": "Todas las estaciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/estacion/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estacion",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Una estacion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/estacion/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estacion",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\":\"Cepsa\",\r\n    \"marca\":\"Cepsa\",\r\n    \"maps\":\"37.3826, -5.99629\",\r\n    \"precioGasoilNormal\": 1.25,\r\n    \"precioGasolina95Octanos\": 1.45\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/estacion/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estacion",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/estacion/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estacion",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar una estacion",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"Repsol\",\r\n    \"marca\":\"Repsol\",\r\n    \"maps\":\"37.20026, -5.99654\",\r\n    \"precioGasoilNormal\": 1.40,\r\n    \"precioGasolina95Octanos\": 1.54\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/estacion/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estacion",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Errores",
+			"item": [
+				{
+					"name": "Editar una estacion precio negativo",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"Repsol\",\r\n    \"marca\":\"Repsol\",\r\n    \"maps\":\"37.20026, -5.99654\",\r\n    \"precioGasoilNormal\": -0.50,\r\n    \"precioGasolina95Octanos\": 1.54\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/estacion/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estacion",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear una estacion con nombre vacío",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"nombre\":\"\",\r\n    \"marca\":\"Cepsa\",\r\n    \"maps\":\"37.3826, -5.99629\",\r\n    \"precioGasoilNormal\": 1.25,\r\n    \"precioGasolina95Octanos\": 1.45\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/estacion/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estacion",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear una estacion precio negativo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\":\"Cepsa\",\r\n    \"marca\":\"Cepsa\",\r\n    \"maps\":\"37.3826, -5.99629\",\r\n    \"precioGasoilNormal\": -1.25,\r\n    \"precioGasolina95Octanos\": 1.45\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/estacion/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estacion",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
