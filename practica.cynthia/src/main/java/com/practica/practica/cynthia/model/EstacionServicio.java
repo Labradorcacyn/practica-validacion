@@ -23,7 +23,6 @@ public class EstacionServicio implements Serializable {
     @GeneratedValue
     private Long id;
 
-    @NotBlank(message = "{EstacionServicio.nombre.blank}")
     private String nombre;
 
     private String marca;
@@ -32,18 +31,12 @@ public class EstacionServicio implements Serializable {
 
     private boolean tieneAutolavado = false;
 
-    @Min(value = 0, message = "{estacionServicio.precio.min}")
-    @NotNull(message = "{estacionServicio.precio.null}")
     private double precioGasoilNormal;
 
-    @Min(value = 0, message = "{estacionServicio.precio.min}")
-    @NotNull(message = "{estacionServicio.precio.null}")
     private double precioGasolina95Octanos;
 
-    @Min(value = 0, message = "{estacionServicio.precio.min}")
     private double precioGasoilEspecial;
 
-    @Min(value = 0, message = "{estacionServicio.precio.min}")
     private double precioGasolina98;
 
     @Lob
@@ -51,5 +44,7 @@ public class EstacionServicio implements Serializable {
 
     @Past
     private LocalDateTime fechaApertura;
+
+    private LocalDateTime fechaRegistro = LocalDateTime.now();
 
 }

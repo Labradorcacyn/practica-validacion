@@ -15,7 +15,13 @@ public class EstacionDto {
     @NotBlank(message = "{EstacionServicio.nombre.blank}")
     private String nombre;
 
-    private String marca, maps;
+    private String marca;
+
+    @Pattern(
+            regexp = "^(\\-?\\d+(\\.\\d+)?),\\w*(\\-?\\d+(\\.\\d+)?)$",
+            message = "{estacionServicio.maps.validate}"
+    )
+    private String maps;
 
     private boolean tieneAutolavado = false;
 
@@ -31,4 +37,6 @@ public class EstacionDto {
 
     @Past
     private LocalDateTime fechaApertura;
+
+    private LocalDateTime fechaRegistro = LocalDateTime.now();
 }
