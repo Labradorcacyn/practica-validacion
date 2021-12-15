@@ -49,13 +49,13 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "Nueva Estación de Servicio",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\":\"Cepsa\",\r\n    \"marca\":\"Cepsa\",\r\n    \"maps\":\"37.3826, -5.99629\",\r\n    \"precioGasoilNormal\": 1.25,\r\n    \"precioGasolina95Octanos\": 1.45\r\n}",
+							"raw": "{\r\n    \"nombre\": \"Repsol\",\r\n    \"marca\": \"REPSOL\",\r\n    \"maps\": \"-153.9842244,77.23478902\",\r\n    \"tieneAutolavado\": false,\r\n    \"precioGasoilNormal\": 9.2,\r\n    \"precioGasolina95Octanos\": 0.73,\r\n    \"precioGasoilEspecial\": 8.27,\r\n    \"precioGasolina98\": 5.66,\r\n    \"servicios\": \"Electronics\",\r\n    \"fechaApertura\": \"2021-01-13T17:09:42.411\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -104,7 +104,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\":\"Repsol\",\r\n    \"marca\":\"Repsol\",\r\n    \"maps\":\"37.20026, -5.99654\",\r\n    \"precioGasoilNormal\": 1.40,\r\n    \"precioGasolina95Octanos\": 1.54\r\n}",
+							"raw": "{\r\n    \"nombre\":\"Repsol\",\r\n    \"marca\":\"Repsol\",\r\n    \"maps\":\"37.20026,-5.99654\",\r\n    \"precioGasoilNormal\": 1.40,\r\n    \"precioGasolina95Octanos\": 1.54,\r\n    \"fechaApertura\": \"2021-01-13T17:09:42.411\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -132,13 +132,13 @@
 			"name": "Errores",
 			"item": [
 				{
-					"name": "Editar una estacion precio negativo",
+					"name": "Editar una estacion precio negativo y error en la localización",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\":\"Repsol\",\r\n    \"marca\":\"Repsol\",\r\n    \"maps\":\"37.20026, -5.99654\",\r\n    \"precioGasoilNormal\": -0.50,\r\n    \"precioGasolina95Octanos\": 1.54\r\n}",
+							"raw": "{\r\n    \"nombre\":\"Repsol\",\r\n    \"marca\":\"Repsol\",\r\n    \"maps\":\"37.20026.-5.99654\",\r\n    \"precioGasoilNormal\": -0.50,\r\n    \"precioGasolina95Octanos\": 1.54\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -167,7 +167,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 2,\r\n    \"nombre\":\"\",\r\n    \"marca\":\"Cepsa\",\r\n    \"maps\":\"37.3826, -5.99629\",\r\n    \"precioGasoilNormal\": 1.25,\r\n    \"precioGasolina95Octanos\": 1.45\r\n}",
+							"raw": "{\r\n    \"nombre\": \"\",\r\n    \"marca\": \"REPSOL\",\r\n    \"maps\": \"-153.9842244,77.23478902\",\r\n    \"tieneAutolavado\": false,\r\n    \"precioGasoilNormal\": 9.2,\r\n    \"precioGasolina95Octanos\": 0.73,\r\n    \"precioGasoilEspecial\": 8.27,\r\n    \"precioGasolina98\": 5.66,\r\n    \"servicios\": \"Electronics\",\r\n    \"fechaApertura\": \"2021-01-13T17:09:42.411\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -196,7 +196,65 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\":\"Cepsa\",\r\n    \"marca\":\"Cepsa\",\r\n    \"maps\":\"37.3826, -5.99629\",\r\n    \"precioGasoilNormal\": -1.25,\r\n    \"precioGasolina95Octanos\": 1.45\r\n}",
+							"raw": "{\r\n    \"nombre\": \"Repsol\",\r\n    \"marca\": \"REPSOL\",\r\n    \"maps\": \"-153.9842244,77.23478902\",\r\n    \"tieneAutolavado\": false,\r\n    \"precioGasoilNormal\": 9.2,\r\n    \"precioGasolina95Octanos\": 0.73,\r\n    \"precioGasoilEspecial\": -8.27,\r\n    \"precioGasolina98\": 5.66,\r\n    \"servicios\": \"Electronics\",\r\n    \"fechaApertura\": \"2021-01-13T17:09:42.411\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/estacion/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estacion",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error en la fecha",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Repsol\",\r\n    \"marca\": \"REPSOL\",\r\n    \"maps\": \"-153.9842244,77.23478902\",\r\n    \"tieneAutolavado\": false,\r\n    \"precioGasoilNormal\": 9.2,\r\n    \"precioGasolina95Octanos\": 0.73,\r\n    \"precioGasoilEspecial\": 8.27,\r\n    \"precioGasolina98\": 5.66,\r\n    \"servicios\": \"Electronics\",\r\n    \"fechaApertura\": \"2024-01-13T17:09:42.411\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/estacion/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estacion",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error creando nueva Estación Servicio por localización",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Repsol\",\r\n    \"marca\": \"REPSOL\",\r\n    \"maps\": \"-153.9842244,77.23478902\",\r\n    \"tieneAutolavado\": false,\r\n    \"precioGasoilNormal\": 9.2,\r\n    \"precioGasolina95Octanos\": 0.73,\r\n    \"precioGasoilEspecial\": 8.27,\r\n    \"precioGasolina98\": 5.66,\r\n    \"servicios\": \"Electronics\",\r\n    \"fechaApertura\": \"2021-01-13T17:09:42.411\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

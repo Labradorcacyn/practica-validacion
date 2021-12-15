@@ -33,9 +33,8 @@ public class EstacionServicioController {
     }
 
     @PostMapping("/")
-    public EstacionDto crear(@Valid @RequestBody EstacionDto dto){
-       estacionServicioService.save(estacionDtoConverter.estacionDtoToEstacionServicio(dto));
-       return dto;
+    public EstacionServicio crear(@Valid @RequestBody EstacionDto dto){
+       return estacionServicioService.save(dto);
     }
 
     @DeleteMapping("/{id}")
@@ -44,7 +43,7 @@ public class EstacionServicioController {
     }
 
     @PutMapping("/{id}")
-    public EstacionDto putEstacion(@PathVariable Long id,@Valid @RequestBody EstacionDto dto){
+    public EstacionServicio putEstacion(@PathVariable Long id,@Valid @RequestBody EstacionDto dto){
        return estacionServicioService.put(id, dto);
     }
 }

@@ -1,5 +1,7 @@
 package com.practica.practica.cynthia.dto;
 
+import com.practica.practica.cynthia.validacion.DateCheck;
+import com.practica.practica.cynthia.validacion.LocatedCheck;
 import lombok.*;
 
 import javax.persistence.Lob;
@@ -9,18 +11,21 @@ import java.time.LocalDateTime;
 @NoArgsConstructor @AllArgsConstructor
 @Builder
 @Getter @Setter
+@DateCheck(fechaApertura = "fechaApertura", fechaRegistro = "fechaRegistro",message = "{estacionServicio.fecha.validate}")
 public class EstacionDto {
     private Long id;
 
-    @NotBlank(message = "{EstacionServicio.nombre.blank}")
+    @NotBlank(message = "{estacionServicio.nombre.blank}")
     private String nombre;
 
     private String marca;
 
-    @Pattern(
+   @Pattern(
             regexp = "^(\\-?\\d+(\\.\\d+)?),\\w*(\\-?\\d+(\\.\\d+)?)$",
             message = "{estacionServicio.maps.validate}"
     )
+
+   @LocatedCheck(maps = "maps", message = "{estacionServicio.mapsEqual.validate}")
     private String maps;
 
     private boolean tieneAutolavado = false;
@@ -38,5 +43,4 @@ public class EstacionDto {
     @Past
     private LocalDateTime fechaApertura;
 
-    private LocalDateTime fechaRegistro = LocalDateTime.now();
 }

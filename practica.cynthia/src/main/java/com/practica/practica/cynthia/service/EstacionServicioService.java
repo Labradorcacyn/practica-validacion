@@ -33,8 +33,8 @@ public class EstacionServicioService {
             return resultado;
     }
 
-    public EstacionServicio save(EstacionServicio estacionServicio){
-        return estacionServicioRepository.save(estacionServicio);
+    public EstacionServicio save(EstacionDto estacionDto){
+        return estacionServicioRepository.save(estacionDtoConverter.estacionDtoToEstacionServicio(estacionDto));
     }
 
     public void remove(Long id){
@@ -47,7 +47,7 @@ public class EstacionServicioService {
         }
     }
 
-    public EstacionDto put(Long id, EstacionDto dto){
+    public EstacionServicio put(Long id, EstacionDto dto){
         return estacionServicioRepository.findById(id).map(e->{
             e.setFechaApertura(dto.getFechaApertura());
             e.setMaps(dto.getMaps());
@@ -59,7 +59,7 @@ public class EstacionServicioService {
             e.setPrecioGasolina98(dto.getPrecioGasolina98());
             e.setNombre(dto.getNombre());
             estacionServicioRepository.save(e);
-            return estacionDtoConverter.estacionServicioToEstacionDto(e);
+            return e;
         })
                 .orElseThrow(() -> new SingleEntityNotFoundException(id.toString(), EstacionServicio.class));
     }

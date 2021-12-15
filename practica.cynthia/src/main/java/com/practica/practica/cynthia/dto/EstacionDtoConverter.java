@@ -3,6 +3,8 @@ package com.practica.practica.cynthia.dto;
 import com.practica.practica.cynthia.model.EstacionServicio;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 public class EstacionDtoConverter {
 
@@ -19,6 +21,8 @@ public class EstacionDtoConverter {
                 .marca(dto.getMarca())
                 .tieneAutolavado(dto.isTieneAutolavado())
                 .nombre(dto.getNombre())
+                .fechaRegistro(LocalDateTime.now())
+                .fechaApertura(dto.getFechaApertura())
                 .build();
     }
 
